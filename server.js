@@ -38,6 +38,11 @@ io.on('connection', (socket) => {
     console.log('Active users:', activeUsers);
   });
 
+
+app.get('/',(req,res)=>{
+    res.send("web")
+})
+
   // When a user sends a message
   socket.on('sendMessage', ({ fromUser, toUser, message }) => {
     const toSocketId = activeUsers[toUser];
