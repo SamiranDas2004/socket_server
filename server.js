@@ -38,11 +38,6 @@ io.on('connection', (socket) => {
     console.log('Active users:', activeUsers);
   });
 
-
-app.get('/',(req,res)=>{
-    res.send("web")
-})
-
   // When a user sends a message
   socket.on('sendMessage', ({ fromUser, toUser, message }) => {
     const toSocketId = activeUsers[toUser];
@@ -65,6 +60,11 @@ app.get('/',(req,res)=>{
     console.log('A user disconnected:', socket.id);
     console.log('Active users:', activeUsers);
   });
+});
+
+// Simple HTTP route to check if the server is running
+app.get('/', (req, res) => {
+  res.send('WebSocket server is running');
 });
 
 // Start the server
